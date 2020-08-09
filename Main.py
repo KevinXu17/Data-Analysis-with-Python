@@ -84,6 +84,27 @@ graph_size = (20, 8)
 # # which gender has the most amount of sales?
 # sales_gender = salesDataFrame['Customer_Gender'].value_counts().head().index[0]
 
+# # How many sales with more than 500 in Revenue were made by men?
+# morethan_500Revenue_men = salesDataFrame.loc[(salesDataFrame['Customer_Gender'] == 'M') & (salesDataFrame['Revenue'] > 500), 'Customer_Gender'].value_counts()[0]
 
-plt.show()
+# # get the top-5 sales with the highest revenue
+# top_5_revenue = salesDataFrame.sort_values(['Revenue'], ascending=False).head(5)
+
+# # get the sale with the highest revenue
+# highest_revenue = salesDataFrame.loc[salesDataFrame['Revenue'] == salesDataFrame['Revenue'].max()]
+
+# # What is the mean Order_Quantity of orders with more than 10K in revenue
+# order_quantity_morethan10K = salesDataFrame.loc[(salesDataFrame['Revenue'] > 10_000), 'Order_Quantity']
+# mean_order_quantity_morethan10K = order_quantity_morethan10K.mean()
+
+# # How many orders were made between May and July of 2016
+# May_to_July_2016 = salesDataFrame.loc[(salesDataFrame['Year'] == 2016) & (salesDataFrame['Month'].isin(['May', 'June', 'July'])), ['Month', 'Profit']]
+# May_to_July_2016_totalOrders = May_to_July_2016.shape[0]
+# May_to_July_2016_box = May_to_July_2016.boxplot(by='Month', figsize=graph_size)
+
+# # Add 7.2% TAX on every sale Unit_Price within US
+# unitprice_us = salesDataFrame.loc[(salesDataFrame['Country'] == 'United States'), 'Unit_Price']
+# changed_unitprice_us = unitprice_us * (1 + 0.072)
+
+# plt.show()
 
